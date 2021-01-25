@@ -1,0 +1,65 @@
+
+Plugin 'ianva/vim-youdao-translater'
+" Plugin 'fatih/vim-go'
+" let g:go_version_warning = 0
+
+Plugin 'voldikss/vim-floaterm'
+let g:floaterm_background = 'black'
+
+nnoremap <F9> :FloatermToggle<CR>
+inoremap <F9> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <F9> <C-\><C-n>:FloatermToggle<CR>
+
+
+Plugin 'ycm-core/YouCompleteMe'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_key_invoke_completion = '<c-z>'
+
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+
+inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
+let g:ycm_log_level='debug'
+
+Plugin 'frazrepo/vim-rainbow'
+let g:rainbow_active = 0
+
+Plugin 'yuttie/comfortable-motion.vim'
+let g:comfortable_motion_no_default_key_mappings=1
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" let g:UltiSnipsExpandTrigger='<CR>'
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsEditSplit="vertical"
+
+Plugin 'ervandew/supertab'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Plugin 'prabirshrestha/asyncomplete.vim'
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+" imap <c-`> <Plug>(asyncomplete_force_refresh)
+
+Plugin 'gtags-cscope'
+" let g:GtagsCscope_Auto_Load=1
+
+" Plugin 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" let g:Lf_ShortcutF = '<C-P>'
+" let g:Lf_ShowDevIcons = 0
+
+Plugin 'justinmk/vim-syntax-extra'
+
+Plugin 'vimwiki/vimwiki'
+let g:vimwiki_list=[{'path':'/home/zhenzhang/env/vimwiki/'}]

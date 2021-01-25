@@ -1,0 +1,256 @@
+
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+if v:version < 800
+    let $NVIM_TUI_DISABLE_CURSOR_SHAPE=1
+endif
+
+set mouse=a
+" set mouse=nih
+" au! ex_gui_font
+" set guifont="Consolas\ h8\ cANSI"
+set cursorline
+set cursorcolumn
+
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
+
+" nnoremap <silent> <F5> :bufdo e!<CR>
+" noremap <silent> <F5> :bufdo e!<CR>
+" vnoremap <silent> <F5> :bufdo e!<CR>
+
+" let g:go_version_warning = 0
+
+set scrolloff=0
+
+autocmd BufNewFile *.[ch],*.hpp,*.cpp,*.sh exec ":call SetTitle()"
+
+func SetTitle()
+    if &filetype == 'sh'
+        call setline(1,"#================================================================")
+        call append(line("."), "# #")
+        call append(line(".")+1, "# # FILENAME:        $RCSfile: ".expand("%:t").",v $")
+        call append(line(".")+2, "# #")
+        call append(line(".")+3, "# # LAST REVISION:   $Revision: 1.0 $")
+        call append(line(".")+4, "# # LAST MODIFIED:   $Date: ".strftime("%Y/%m/%d"))
+        call append(line(".")+5, "# #")
+        call append(line(".")+6, "# # DESCRIPTION:     xxxx feature: ")
+        call append(line(".")+7, "# #")
+        call append(line(".")+8, "# #")
+        call append(line(".")+9, "# # Copyright (c) ".strftime("%Y")." by Grandstream Networks, Inc.")
+        call append(line(".")+10, "# # All rights reserved.")
+        call append(line(".")+11, "# #")
+        call append(line(".")+12, "# # This material is proprietary to Grandstream Networks, Inc. and,")
+        call append(line(".")+13, "# # in addition to the above mentioned Copyright, may be")
+        call append(line(".")+14, "# # subject to protection under other intellectual property")
+        call append(line(".")+15, "# # regimes, including patents, trade secrets, designs and/or")
+        call append(line(".")+16, "# #")
+        call append(line(".")+17, "# # Any use of this material for any purpose, except with an")
+        call append(line(".")+18, "# # express license from Grandstream Networks, Inc. is strictly")
+        call append(line(".")+19, "# # prohibited.")
+        call append(line(".")+20, "# #")
+        call append(line(".")+21, "#================================================================")
+        call append(line(".")+22, "#!/bin/sh")
+        call append(line(".")+23, "")
+    else
+        call setline(1,"/****************************************************************************")
+        call append(line("."), "* *")
+        call append(line(".")+1, "* * FILENAME:        $RCSfile: ".expand("%:t").",v $")
+        call append(line(".")+2, "* *")
+        call append(line(".")+3, "* * LAST REVISION:   $Revision: 1.0 $")
+        call append(line(".")+4, "* * LAST MODIFIED:   $Date: ".strftime("%Y/%m/%d"))
+        call append(line(".")+5, "* *")
+        call append(line(".")+6, "* * DESCRIPTION:     xxxx feature: ")
+        call append(line(".")+7, "* *")
+        call append(line(".")+8, "* *")
+        call append(line(".")+9, "* * Copyright (c) ".strftime("%Y")." by Grandstream Networks, Inc.")
+        call append(line(".")+10, "* * All rights reserved.")
+        call append(line(".")+11, "* *")
+        call append(line(".")+12, "* * This material is proprietary to Grandstream Networks, Inc. and,")
+        call append(line(".")+13, "* * in addition to the above mentioned Copyright, may be")
+        call append(line(".")+14, "* * subject to protection under other intellectual property")
+        call append(line(".")+15, "* * regimes, including patents, trade secrets, designs and/or")
+        call append(line(".")+16, "* *")
+        call append(line(".")+17, "* * Any use of this material for any purpose, except with an")
+        call append(line(".")+18, "* * express license from Grandstream Networks, Inc. is strictly")
+        call append(line(".")+19, "* * prohibited.")
+        call append(line(".")+20, "* *")
+        call append(line(".")+21, "* ***************************************************************************/")
+
+
+        if expand("%:e") == 'hpp'
+            call append(line(".")+22, "#ifndef _".toupper(expand("%:t:r"))."_H")
+            call append(line(".")+23, "#define _".toupper(expand("%:t:r"))."_H")
+            call append(line(".")+24, "#ifdef __cplusplus")
+            call append(line(".")+25, "extern \"C\"")
+            call append(line(".")+26, "{")
+            call append(line(".")+27, "#endif")
+            call append(line(".")+28, "")
+
+            call append(line(".")+29, "//=================")
+            call append(line(".")+30, "//  Includes")
+            call append(line(".")+31, "//=================")
+            call append(line(".")+32,"//#include \"".expand("%:t:r").".h\"")
+            call append(line(".")+33, "")
+            call append(line(".")+34, "")
+            call append(line(".")+35, "//=================")
+            call append(line(".")+36, "//  Defines")
+            call append(line(".")+37, "//=================")
+            call append(line(".")+38, "")
+            call append(line(".")+39, "//=================")
+            call append(line(".")+40, "//  Typedefs")
+            call append(line(".")+41, "//=================")
+            call append(line(".")+42, "")
+            call append(line(".")+43, "//=================")
+            call append(line(".")+44, "//  Classes")
+            call append(line(".")+45, "//=================")
+            call append(line(".")+46, "")
+            call append(line(".")+47, "//=================")
+            call append(line(".")+48, "//  Globals")
+            call append(line(".")+49, "//=================")
+            call append(line(".")+50, "")
+            call append(line(".")+51, "//=================")
+            call append(line(".")+52, "//  Locals")
+            call append(line(".")+53, "//=================")
+
+            call append(line(".")+54, "")
+            call append(line(".")+55, "/*")
+            call append(line(".")+56, " * Private Functions")
+            call append(line(".")+57, " */")
+
+            call append(line(".")+58, "")
+            call append(line(".")+59, "/*")
+            call append(line(".")+60, " * Private Data")
+            call append(line(".")+61, " */")
+
+            call append(line(".")+62, "")
+            call append(line(".")+63, "//=================")
+            call append(line(".")+64, "//  Functions")
+            call append(line(".")+65, "//=================")
+            call append(line(".")+66, "")
+
+            call append(line(".")+67, "#ifdef __cplusplus")
+            call append(line(".")+68, "}")
+            call append(line(".")+69, "#endif")
+            call append(line(".")+70, "#endif //".toupper(expand("%:t:r"))."_H")
+         elseif expand("%:e") == 'h'
+            call append(line(".")+22, "#pragma once")
+            call append(line(".")+22, "#ifndef _".toupper(expand("%:t:r"))."_H")
+            call append(line(".")+23, "#define _".toupper(expand("%:t:r"))."_H")
+            call append(line(".")+24, "//=================")
+            call append(line(".")+25, "//  Includes")
+            call append(line(".")+26, "//=================")
+            call append(line(".")+27, "")
+            call append(line(".")+28, "//=================")
+            call append(line(".")+29, "//  Defines")
+            call append(line(".")+30, "//=================")
+            call append(line(".")+31, "")
+            call append(line(".")+32, "//=================")
+            call append(line(".")+33, "//  Typedefs")
+            call append(line(".")+34, "//=================")
+            call append(line(".")+35, "")
+            call append(line(".")+36, "//=================")
+            call append(line(".")+37, "//  Globals")
+            call append(line(".")+38, "//=================")
+            call append(line(".")+39, "")
+            call append(line(".")+40, "//=================")
+            call append(line(".")+41, "//  Locals")
+            call append(line(".")+42, "//=================")
+
+            call append(line(".")+43, "")
+            call append(line(".")+44, "/*")
+            call append(line(".")+45, " * Private Functions")
+            call append(line(".")+46, " */")
+
+            call append(line(".")+47, "")
+            call append(line(".")+48, "/*")
+            call append(line(".")+49, " * Private Data")
+            call append(line(".")+50, " */")
+
+            call append(line(".")+51, "")
+            call append(line(".")+52, "//=================")
+            call append(line(".")+53, "//  Functions")
+            call append(line(".")+54, "//=================")
+            call append(line(".")+55, "")
+            call append(line(".")+56, "#endif //".toupper(expand("%:t:r"))."_H")
+         elseif &filetype == 'c'
+            call append(line(".")+22, "//=================")
+            call append(line(".")+23, "//  Includes")
+            call append(line(".")+24, "//=================")
+            call append(line(".")+25,"//#include \"".expand("%:t:r").".h\"")
+            call append(line(".")+26, "")
+            call append(line(".")+27, "")
+            call append(line(".")+28, "//=================")
+            call append(line(".")+29, "//  Defines")
+            call append(line(".")+30, "//=================")
+            call append(line(".")+31, "")
+            call append(line(".")+32, "//=================")
+            call append(line(".")+33, "//  Typedefs")
+            call append(line(".")+34, "//=================")
+            call append(line(".")+35, "")
+            call append(line(".")+36, "//=================")
+            call append(line(".")+37, "//  Globals")
+            call append(line(".")+38, "//=================")
+            call append(line(".")+39, "")
+            call append(line(".")+40, "//=================")
+            call append(line(".")+41, "//  Locals")
+            call append(line(".")+42, "//=================")
+
+            call append(line(".")+43, "")
+            call append(line(".")+44, "/*")
+            call append(line(".")+45, " * Private Functions")
+            call append(line(".")+46, " */")
+
+            call append(line(".")+47, "")
+            call append(line(".")+48, "/*")
+            call append(line(".")+49, " * Private Data")
+            call append(line(".")+50, " */")
+
+            call append(line(".")+51, "")
+            call append(line(".")+52, "//=================")
+            call append(line(".")+53, "//  Functions")
+            call append(line(".")+54, "//=================")
+         elseif &filetype == 'cpp'
+            call append(line(".")+22, "//=================")
+            call append(line(".")+23, "//  Includes")
+            call append(line(".")+24, "//=================")
+            call append(line(".")+25,"//#include \"".expand("%:t:r").".h\"")
+            call append(line(".")+26, "")
+            call append(line(".")+27, "")
+            call append(line(".")+28, "//=================")
+            call append(line(".")+29, "//  Defines")
+            call append(line(".")+30, "//=================")
+            call append(line(".")+31, "")
+            call append(line(".")+32, "//=================")
+            call append(line(".")+33, "//  Typedefs")
+            call append(line(".")+34, "//=================")
+            call append(line(".")+35, "")
+            call append(line(".")+36, "//=================")
+            call append(line(".")+37, "//  Classes")
+            call append(line(".")+38, "//=================")
+            call append(line(".")+39, "")
+            call append(line(".")+40, "//=================")
+            call append(line(".")+41, "//  Globals")
+            call append(line(".")+42, "//=================")
+            call append(line(".")+43, "")
+            call append(line(".")+44, "//=================")
+            call append(line(".")+45, "//  Locals")
+            call append(line(".")+46, "//=================")
+
+            call append(line(".")+47, "")
+            call append(line(".")+48, "/*")
+            call append(line(".")+49, " * Private Functions")
+            call append(line(".")+50, " */")
+
+            call append(line(".")+51, "")
+            call append(line(".")+52, "/*")
+            call append(line(".")+53, " * Private Data")
+            call append(line(".")+54, " */")
+
+            call append(line(".")+55, "")
+            call append(line(".")+56, "//=================")
+            call append(line(".")+57, "//  Functions")
+            call append(line(".")+58, "//=================")
+         endif
+    endif
+endfunc

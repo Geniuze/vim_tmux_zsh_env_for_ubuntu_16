@@ -1,0 +1,31 @@
+[user]
+    name = zhenzhang
+    email = zhenzhang@grandstream.cn
+[color]
+    #    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    st = status
+    rb = rebase
+    sr = svn rebase
+    ci = commit -a
+    co = checkout
+    di = diff
+    br = branch
+    lg = "log --left-right --pretty=format:'%d\t%h - %ar, %an\t%s' --date=iso"
+    bl = blame
+    chp = cherry-pick
+    review = !sh -c 'git push origin HEAD:refs/for/$1' -
+[merge]
+    tool = vimdiff
+[core]
+    editor = vim
+    sparsecheckout = true
+	excludesfile = /home/zhenzhang/.gitignore_global
+[http]
+        sslVerify = false
+[push]
+        default = matching
+[oh-my-zsh]
+	hide-dirty = 1
