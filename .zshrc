@@ -116,4 +116,7 @@ setopt no_share_history
 
 export TERM=xterm-256color
 export PATH=$PATH:~/bin
+export GOROOT=/usr/lib/go
+export GOPATH=/home/zhenzhang/go/code
+export PATH=$PATH:$GOPATH/bin
 
