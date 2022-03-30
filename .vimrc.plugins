@@ -25,7 +25,7 @@ nnoremap <unique> <leader>ve :call exconfig#edit_cur_vimentry ()<CR>
 Plugin 'exvim/ex-utility'
 
 nnoremap <unique> <silent> <Leader>bd :EXbd<CR>
-nnoremap <unique> <silent> <C-l> :EXbn<CR>
+" nnoremap <unique> <silent> <C-l> :EXbn<CR>
 nnoremap <unique> <silent> <C-h> :EXbp<CR>
 nnoremap <unique> <silent> <C-Tab> :EXbalt<CR>
 nnoremap <unique> <silent> <Leader><Tab> :EXsw<CR>
@@ -105,31 +105,31 @@ Plugin 'exvim/ex-taglist'
 " F4:  Switch on/off TagList
 nnoremap <unique> <silent> <F4> :TlistToggle<CR>
 
-"let Tlist_Ctags_Cmd = $VIM.'/vimfiles/ctags.exe' " location of ctags tool
+""let Tlist_Ctags_Cmd = $VIM.'/vimfiles/ctags.exe' " location of ctags tool
 let Tlist_Show_One_File = 1 " Displaying tags for only one file~
 let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
 let Tlist_Use_Right_Window = 1 " split to the right side of the screen
 let Tlist_Sort_Type = "order" " sort by order or name
 let Tlist_Display_Prototype = 0 " do not show prototypes and not tags in the taglist window.
-let Tlist_Compart_Format = 1 " Remove extra information and blank lines from the taglist window.
+"let Tlist_Compart_Format = 1 " Remove extra information and blank lines from the taglist window.
 let Tlist_GainFocus_On_ToggleOpen = 1 " Jump to taglist window on open.
 let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
-let Tlist_Close_On_Select = 0 " Close the taglist window when a file or tag is selected.
-let Tlist_BackToEditBuffer = 0 " If no close on select, let the user choose back to edit buffer or not
-let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
+"let Tlist_Close_On_Select = 0 " Close the taglist window when a file or tag is selected.
+let Tlist_BackToEditBuffer = 1 " If no close on select, let the user choose back to edit buffer or not
+let Tlist_Enable_Fold_Column = 1 " Don't Show the fold indicator column in the taglist window.
 let Tlist_WinWidth = 40
-let Tlist_Compact_Format = 1 " do not show help
+"let Tlist_Compact_Format = 1 " do not show help
 " let Tlist_Ctags_Cmd = 'ctags --c++-kinds=+p --fields=+iaS --extra=+q --languages=c++'
 " very slow, so I disable this
 " let Tlist_Process_File_Always = 1 " To use the :TlistShowTag and the :TlistShowPrototype commands without the taglist window and the taglist menu, you should set this variable to 1.
 ":TlistShowPrototype [filename] [linenumber]
 
 " add javascript language
-let tlist_javascript_settings = 'javascript;v:global variable:0:0;c:class;p:property;m:method;f:function;r:object'
+"let tlist_javascript_settings = 'javascript;v:global variable:0:0;c:class;p:property;m:method;f:function;r:object'
 " add hlsl shader language
-let tlist_hlsl_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
+"let tlist_hlsl_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
 " add actionscript language
-let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
+"let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
 
 " DISABLE: use tlist instead
 " " exvim/ex-tagbar: invoke by <F4>
@@ -274,12 +274,12 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " let g:airline_section_warning = ''
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-let g:ctrlp_follow_symlinks = 2
-let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
-nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
+"Plugin 'kien/ctrlp.vim'
+"let g:ctrlp_working_path_mode = ''
+"let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+"let g:ctrlp_follow_symlinks = 2
+"let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
+"nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------
@@ -297,11 +297,11 @@ xmap s <Plug>VSurround
 
 " nerdtree: invoke by :NERDTreeToggle
 " ---------------------------------------------------
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 
-let g:NERDTreeWinSize = 30
-let g:NERDTreeMouseMode = 1
-let g:NERDTreeMapToggleZoom = '<Space>'
+"let g:NERDTreeWinSize = 30
+"let g:NERDTreeMouseMode = 1
+"let g:NERDTreeMapToggleZoom = '<Space>'
 
 " nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
 " ---------------------------------------------------
@@ -433,13 +433,13 @@ let g:LargeFile= 5 " files >= 5MB will use LargeFile rules
 
 " ex-cref: invoke by <leader>cr
 " ---------------------------------------------------
-Plugin 'exvim/ex-cref'
+"Plugin 'exvim/ex-cref'
 
 " this is modified for default c syntax highlight settings
 " make it don't highlight error pattern
-let c_gnu = 1
-let c_no_curly_error = 1
-let c_no_bracket_error = 1
+"let c_gnu = 1
+"let c_no_curly_error = 1
+"let c_no_bracket_error = 1
 
 "}}}
 

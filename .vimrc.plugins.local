@@ -11,9 +11,9 @@ inoremap <F9> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <F9> <C-\><C-n>:FloatermToggle<CR>
 
 
-Plugin 'ycm-core/YouCompleteMe'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_key_invoke_completion = '<c-z>'
+" Plugin 'ycm-core/YouCompleteMe'
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_key_invoke_completion = '<c-z>'
 
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
@@ -21,19 +21,20 @@ let g:ycm_add_preview_to_completeopt = 0
 inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
 let g:ycm_log_level='debug'
 
-Plugin 'frazrepo/vim-rainbow'
-let g:rainbow_active = 0
+" Rainbow brackets for Vim
+"Plugin 'frazrepo/vim-rainbow'
+"let g:rainbow_active = 0
 
 Plugin 'yuttie/comfortable-motion.vim'
 let g:comfortable_motion_no_default_key_mappings=1
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:UltiSnipsExpandTrigger='<tab>'
+"let g:UltiSnipsExpandTrigger="<c-e>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " let g:UltiSnipsExpandTrigger='<CR>'
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -55,11 +56,109 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 Plugin 'gtags-cscope'
 " let g:GtagsCscope_Auto_Load=1
 
-" Plugin 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" let g:Lf_ShortcutF = '<C-P>'
-" let g:Lf_ShowDevIcons = 0
+Plugin 'Yggdroot/LeaderF', { 'do': './install.sh' }
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_ShowDevIcons = 0
 
-Plugin 'justinmk/vim-syntax-extra'
+" -> highlight
+"Plugin 'justinmk/vim-syntax-extra'
 
 Plugin 'vimwiki/vimwiki'
 let g:vimwiki_list=[{'path':'/home/zhenzhang/env/vimwiki/'}]
+
+" Plugin 'makerj/vim-pdf'
+
+" Plugin 'copilot.vim'
+
+"Plugin 'liuchengxu/vista.vim'
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+" Note: this option only works for the kind renderer, not the tree renderer.
+"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+"let g:vista_default_executive = 'ctags'
+
+" Set the executive for some filetypes explicitly. Use the explicit executive
+" instead of the default one for these filetypes when using `:Vista` without
+" specifying the executive.
+"let g:vista_executive_for = {
+"  \ 'cpp': 'vim_lsp',
+"  \ 'php': 'vim_lsp',
+"  \ }
+
+" Declare the command including the executable and options used to generate ctags output
+" for some certain filetypes.The file path will be appened to your custom command.
+" For example:
+"let g:vista_ctags_cmd = {
+"      \ 'haskell': 'hasktags -x -o - -c',
+"      \ }
+
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+"let g:vista_fzf_preview = ['right:50%']
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+"let g:vista#renderer#enable_icon = 0
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+"let g:vista#renderer#icons = {
+"\   "function": "\uf794",
+"\   "variable": "\uf71b",
+"\  }
+
+"function! NearestMethodOrFunction() abort
+"  return get(b:, 'vista_nearest_method_or_function', '')
+"endfunction
+
+"set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+"autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+"nnoremap <unique> <silent> <F4> :Vista!!<CR>
+
+"Plugin 'preservim/nerdtree'
+"Plugin 'ryanoasis/vim-devicons'
+"Plugin 'liuchengxu/nerdtree-dash'
+
+Plugin 'nvim-treesitter/nvim-treesitter'
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+--  ensure_installed = {"html", "css", "c", "vim", "lua", "javascript", "typescript", "tsx"},
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+    -- 启用增量选择
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<CR>',
+      node_incremental = '<CR>',
+      node_decremental = '<BS>',
+      scope_incremental = '<TAB>',
+    }
+  },
+    -- 启用基于Treesitter的代码格式化(=) . NOTE: This is an experimental feature.
+  indent = {
+    enable = true
+  }
+}
+-- 开启 Folding
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+-- 默认不要折叠
+-- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
+vim.wo.foldlevel = 99
+EOF

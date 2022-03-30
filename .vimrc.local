@@ -254,3 +254,5 @@ func SetTitle()
          endif
     endif
 endfunc
+
+command! Scratch lua require'tools'.makeScratch()

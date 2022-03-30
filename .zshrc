@@ -119,4 +119,5 @@ export PATH=$PATH:~/bin
 export GOROOT=/usr/lib/go
 export GOPATH=/home/zhenzhang/go/code
 export PATH=$PATH:$GOPATH/bin
+export PYTHONHTTPSVERIFY=0
 
